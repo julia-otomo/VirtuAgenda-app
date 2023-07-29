@@ -26,4 +26,6 @@ export interface iContactContextProps {
   createContact: (data: TContactRequest) => Promise<void>;
   updateContact: (data: TContactUpdate, email: string) => Promise<void>;
   deleteContact: (email: string) => Promise<void>;
+  headerTitle: string;
+  setHeaderTitle: React.Dispatch<React.SetStateAction<string>>;
 }

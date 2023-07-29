@@ -15,6 +15,7 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
   const [updateModal, setUpdateModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [createModal, setCreateModal] = useState(false);
+  const [headerTitle, setHeaderTitle] = useState("contacts");
   const [contacts, setContacts] = useState<iContactInformation[]>([]);
 
   useEffect(() => {
@@ -122,6 +123,8 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
         createContact,
         updateContact,
         deleteContact,
+        headerTitle,
+        setHeaderTitle,
       }}
     >
       {children}

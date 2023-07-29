@@ -35,6 +35,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
             },
           });
           setUser(login.data);
+          navigate("/dashboard");
         } catch (error) {
           console.log(error);
           toast.error("Token expirado, realize o login novamente");
@@ -63,6 +64,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       setUser(login.data.user);
       localStorage.setItem("@Token", login.data.token);
       localStorage.setItem("@UserId", login.data.user.id);
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
       toast.error("Email ou senha incorretos");
