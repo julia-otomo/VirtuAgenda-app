@@ -7,7 +7,7 @@ import { UserContext } from "../../contexts/userContext";
 export const Header = () => {
   const { menu, setMenu } = useContext(UserContext);
   return (
-    <header className="bg-blue-300 h-16 top-0 fixed w-screen flex flex-col items-center">
+    <header className="bg-blue-300 h-16 top-0 fixed w-screen flex flex-col items-center z-10">
       <div className="w-4/5 h-full flex flex-row items-center justify-between p-4 border-box bg-slate-300">
         <h1>VirtuAgenda</h1>
         <div className=" hidden lg:flex lg:flex-row lg:gap-20 lg:h-full">

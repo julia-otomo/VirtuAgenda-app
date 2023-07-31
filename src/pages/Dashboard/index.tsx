@@ -4,6 +4,7 @@ import { UserContext } from "../../contexts/userContext";
 import { HeaderButton } from "../../components/Header/HeaderButton";
 import { ContactContext } from "../../contexts/contactContext";
 import { ContactContainer } from "../../components/ContactContainer";
+import { ProfileContainer } from "../../components/ProfileContainer";
 
 export const Dashboard = () => {
   const { menu } = useContext(UserContext);
@@ -20,6 +21,7 @@ export const Dashboard = () => {
         )}
 
         {headerTitle == "contacts" ? <ContactContainer /> : null}
+        {headerTitle == "profile" ? <ProfileContainer /> : null}
       </main>
     </div>
   );

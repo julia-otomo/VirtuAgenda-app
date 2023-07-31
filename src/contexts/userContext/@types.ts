@@ -6,7 +6,7 @@ export interface iUserResponseInformation {
   id: string;
   name: string;
   image: string;
-  addedAt: string | Date;
+  addedAt: string;
   details: iUserDetailsInformation[];
 }
 

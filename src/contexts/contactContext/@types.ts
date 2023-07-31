@@ -28,4 +28,9 @@ export interface iContactContextProps {
   deleteContact: (email: string) => Promise<void>;
   headerTitle: string;
   setHeaderTitle: React.Dispatch<React.SetStateAction<string>>;
+  contact: iContactInformation | null;
+  setContact: React.Dispatch<React.SetStateAction<iContactInformation | null>>;
+  setContactById: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
 }

@@ -17,6 +17,7 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
   const [createModal, setCreateModal] = useState(false);
   const [headerTitle, setHeaderTitle] = useState("contacts");
   const [contacts, setContacts] = useState<iContactInformation[]>([]);
+  const [contact, setContact] = useState<iContactInformation | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("@Token");
@@ -39,6 +40,14 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
       getAllContacts();
     }
   }, []);
+
+  const setContactById = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    const contactId = event.currentTarget.id;
+    const contactFound = contacts.find((cont) => cont.id == contactId);
+    setContact(contactFound!);
+  };
 
   const createContact = async (data: TContactRequest) => {
     const token = localStorage.getItem("@Token");
@@ -125,6 +134,9 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
         deleteContact,
         headerTitle,
         setHeaderTitle,
+        contact,
+        setContact,
+        setContactById,
       }}
     >
       {children}
