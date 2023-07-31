@@ -26,8 +26,8 @@ export interface iUserUpdateInformation {
 
 export interface iUserDetailsInformation {
   id: string;
-  email: string;
-  phone: string;
+  email?: string | null;
+  phone?: string | null;
   contactTitle: string;
 }
 
@@ -37,8 +37,8 @@ export interface iUserLogin {
 }
 
 export interface iUserDetailsRequest {
-  email: string;
-  phone: string;
+  email?: string | null;
+  phone?: string | null;
   contactTitle: string;
 }
 
@@ -48,8 +48,8 @@ export type TUserDetailsPartialUpdate = Partial<TUserDetailsUpdate>;
 
 export interface iUserContextProps {
   user: iUserResponseInformation | null;
-  modal: boolean;
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  editUserModal: boolean;
+  setEditUserModal: React.Dispatch<React.SetStateAction<boolean>>;
   menu: boolean;
   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
   userRegister: (data: iUserRequestInformation) => Promise<void>;
@@ -63,4 +63,17 @@ export interface iUserContextProps {
     contactTitle: string
   ) => Promise<void>;
   deleteUserDetails: (contactTitle: string) => Promise<void>;
+  createUserDetailModal: boolean;
+  setCreateUserDetailModal: React.Dispatch<React.SetStateAction<boolean>>;
+  editUserDetailModal: boolean;
+  setEditUserDetailModal: React.Dispatch<React.SetStateAction<boolean>>;
+  deleteUserDetailModal: boolean;
+  setDeleteUserDetailModal: React.Dispatch<React.SetStateAction<boolean>>;
+  userDetail: iUserDetailsInformation | null;
+  setUserDetail: React.Dispatch<
+    React.SetStateAction<iUserDetailsInformation | null>
+  >;
+  setUserDetailtById: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
 }

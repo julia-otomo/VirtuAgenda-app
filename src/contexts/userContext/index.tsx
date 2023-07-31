@@ -18,9 +18,25 @@ export const UserContext = createContext({} as iUserContextProps);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const [user, setUser] = useState<iUserResponseInformation | null>(null);
+  const [userDetail, setUserDetail] = useState<iUserDetailsInformation | null>(
+    null
+  );
   const navigate = useNavigate();
-  const [modal, setModal] = useState(false);
+  const [editUserModal, setEditUserModal] = useState(false);
+  const [createUserDetailModal, setCreateUserDetailModal] = useState(false);
+  const [editUserDetailModal, setEditUserDetailModal] = useState(false);
+  const [deleteUserDetailModal, setDeleteUserDetailModal] = useState(false);
   const [menu, setMenu] = useState(false);
+
+  const setUserDetailtById = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    const userDetailId = event.currentTarget.id;
+    const userDetailFound = user!.details.find(
+      (detail) => detail.id == userDetailId
+    );
+    setUserDetail(userDetailFound!);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("@Token");
@@ -195,8 +211,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     <UserContext.Provider
       value={{
         user,
-        modal,
-        setModal,
+        editUserModal,
+        setEditUserModal,
         menu,
         setMenu,
         userRegister,
@@ -207,6 +223,15 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         createUserDetails,
         updateUserDetails,
         deleteUserDetails,
+        createUserDetailModal,
+        setCreateUserDetailModal,
+        editUserDetailModal,
+        setEditUserDetailModal,
+        deleteUserDetailModal,
+        setDeleteUserDetailModal,
+        userDetail,
+        setUserDetail,
+        setUserDetailtById,
       }}
     >
       {children}

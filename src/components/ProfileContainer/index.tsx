@@ -1,8 +1,22 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
+import { UpdateUserModal } from "../Modals/UpdateUser";
+import { ProfileCard } from "./ProfileCard";
+import { CreateUserDetailModal } from "../Modals/CreateUserDetailsModal";
+import { UpdateUserDetailModal } from "../Modals/UpdateUserDetailModaL";
+import { DeleteUserDetailModal } from "../Modals/DeleteUserDetailModal";
 
 export const ProfileContainer = () => {
-  const { user, logout } = useContext(UserContext);
+  const {
+    user,
+    logout,
+    editUserModal,
+    setEditUserModal,
+    createUserDetailModal,
+    setCreateUserDetailModal,
+    editUserDetailModal,
+    deleteUserDetailModal,
+  } = useContext(UserContext);
   return (
     <div>
       <div>
@@ -15,7 +29,7 @@ export const ProfileContainer = () => {
               .split("-")
               .reverse()
               .join("/")}`}</p>
-            <button>Editar</button>
+            <button onClick={() => setEditUserModal(true)}>Editar</button>
           </div>
         </div>
       </div>
@@ -23,11 +37,28 @@ export const ProfileContainer = () => {
       <div>
         <div>
           <h2>Suas informações de contato</h2>
-          <button>Nova informação</button>
+          <button onClick={() => setCreateUserDetailModal(true)}>
+            Nova informação
+          </button>
         </div>
 
-        <ul></ul>
+        <ul>
+          {user!.details.map((detail) => (
+            <ProfileCard
+              id={detail.id}
+              email={detail.email}
+              phone={detail.phone}
+              contactTitle={detail.contactTitle}
+              key={detail.id}
+            />
+          ))}
+        </ul>
       </div>
+
+      {editUserModal ? <UpdateUserModal /> : null}
+      {createUserDetailModal ? <CreateUserDetailModal /> : null}
+      {editUserDetailModal ? <UpdateUserDetailModal /> : null}
+      {deleteUserDetailModal ? <DeleteUserDetailModal /> : null}
     </div>
   );
 };

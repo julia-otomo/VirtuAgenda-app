@@ -33,4 +33,10 @@ export interface iContactContextProps {
   setContactById: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  filteredContacts: iContactInformation[];
+  contactsToRender: iContactInformation[];
+  filterContactsByInput: () => void;
+  clearFilteredList: () => void;
 }

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { SyntheticEvent, useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import { ContactContext } from "../../contexts/contactContext";
 import { CreateContactModal } from "../Modals/CreateContact";
@@ -12,18 +12,36 @@ export const ContactContainer = () => {
     createModal,
     setCreateModal,
     updateModal,
-    setUpdateModal,
     deleteModal,
-    setDeleteModal,
+    contactsToRender,
+    input,
+    setInput,
+    filterContactsByInput,
+    filteredContacts,
+    clearFilteredList,
   } = useContext(ContactContext);
+
+  const buttonSubmit = (event: SyntheticEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    filterContactsByInput();
+  };
   return (
     <div className="w-4/5 p-4 border-box mt-5 bg-slate-400">
       <div className="flex flex-row items-center relative max-w-xs">
-        <input type="text" className="w-full  p-1 border-box" />
-        <button className="absolute right-2">
+        <input
+          type="text"
+          className="w-full  p-1 border-box"
+          value={input}
+          onChange={(event) => setInput(event.currentTarget.value)}
+        />
+        <button className="absolute right-2" onClick={buttonSubmit}>
           <FaSearch />
         </button>
       </div>
+      {filteredContacts.length > 0 ? (
+        <button onClick={clearFilteredList}>Voltar</button>
+      ) : null}
       <button onClick={() => setCreateModal(true)}>Novo Contato</button>
       <div>
         <h2>Contatos</h2>
@@ -31,13 +49,14 @@ export const ContactContainer = () => {
           <h2>Nenhum contato foi adicionado</h2>
         ) : (
           <ul>
-            {contacts.map((contact) => (
+            {contactsToRender.map((contact) => (
               <ContactCard
                 id={contact.id}
                 image={contact.image}
                 name={contact.name}
                 email={contact.email}
                 phone={contact.phone}
+                key={contact.id}
               />
             ))}
           </ul>

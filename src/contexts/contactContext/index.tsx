@@ -18,6 +18,31 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
   const [headerTitle, setHeaderTitle] = useState("contacts");
   const [contacts, setContacts] = useState<iContactInformation[]>([]);
   const [contact, setContact] = useState<iContactInformation | null>(null);
+  const [filteredContacts, setFilteredContacts] = useState<
+    iContactInformation[]
+  >([]);
+  const [input, setInput] = useState("");
+  const contactsToRender =
+    filteredContacts.length > 0 ? filteredContacts : contacts;
+
+  const filterContactsByInput = () => {
+    if (input !== "") {
+      const filterContacts = contacts.filter(
+        (cont) =>
+          cont.name.toLowerCase().includes(input.toLowerCase()) ||
+          cont.email.toLowerCase().includes(input.toLowerCase()) ||
+          cont.phone.toLowerCase().includes(input.toLowerCase())
+      );
+      setFilteredContacts(filterContacts);
+    } else {
+      setFilteredContacts([]);
+    }
+  };
+
+  const clearFilteredList = () => {
+    setInput("");
+    setFilteredContacts([]);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("@Token");
@@ -137,6 +162,12 @@ export const ContactProvider = ({ children }: iContactProviderProps) => {
         contact,
         setContact,
         setContactById,
+        setInput,
+        filteredContacts,
+        filterContactsByInput,
+        clearFilteredList,
+        contactsToRender,
+        input,
       }}
     >
       {children}
