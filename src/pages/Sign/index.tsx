@@ -22,56 +22,78 @@ const SignPage = () => {
     await userRegister(data);
   };
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center bg-slate-500">
-      <div className="w-4/5 flex flex-col items-center justify-center gap-8">
-        <h2>VirtuAgenda</h2>
-        <form onSubmit={handleSubmit(onSubmitForm)}>
-          <h2>Cadastro</h2>
+    <div className="w-screen h-screen flex flex-col items-center justify-center bg-[url('./assets/wallpaper1.jpg')] bg-cover bg-no-repeat">
+      <div className=" bg-stone-100 bg-opacity-80 w-4/5 max-h-fit flex flex-col items-center justify-center gap-8 py-8 px-4 border-box rounded-3xl overflow-hidden">
+        <h2 className="text-2xl font-semibold text-lime-800">VirtuAgenda</h2>
+
+        <form
+          onSubmit={handleSubmit(onSubmitForm)}
+          className="flex flex-col gap-6 items-center max-h-fit  overflow-y-auto  w-11/12"
+        >
+          <h2 className="text-xl font-medium text-stone-800 mb-2 underline decoration-stone-800">
+            Cadastro
+          </h2>
           <Input
             type="text"
             id="name"
-            title="Nome Completo"
+            title="Nome Completo*"
             errorMessage={errors.name}
             {...register("name")}
+            placeholder="Digite seu nome"
           />
           <Input
             type="email"
             id="email"
-            title="Email"
+            title="Email*"
             errorMessage={errors.email}
             {...register("email")}
+            placeholder="Digite seu email"
           />
           <Input
             type="password"
             id="password"
-            title="Senha"
+            title="Senha*"
             errorMessage={errors.password}
             {...register("password")}
+            placeholder="Define sua senha"
           />
           <Input
             type="password"
             id="confirmPassword"
-            title="Confirmar Senha"
+            title="Confirmar Senha*"
             errorMessage={errors.confirmPassword}
             {...register("confirmPassword")}
+            placeholder="Confirme sua senha"
           />
           <Input
             type="text"
             id="image"
-            title="Foto de Perfil"
+            title="Foto de Perfil*"
             errorMessage={errors.image}
             {...register("image")}
+            placeholder="Cole a url de uma imagem"
           />
           <Input
             type="text"
             id="phone"
-            title="Número do telefone"
+            title="Número do telefone*"
             errorMessage={errors.phone}
             {...register("phone")}
+            placeholder="Digite seu número de telefone"
           />
-          <button type="submit">Cadastrar</button>
+          <button
+            type="submit"
+            className="py-2 px-4 w-full border-box bg-lime-700 rounded-3xl mt-2 text-stone-100 hover:bg-lime-900 transition duration-0 hover:duration-300 cursor-pointer"
+          >
+            Cadastrar
+          </button>
         </form>
-        <Link to={"/"}>Voltar</Link>
+        <Link
+          to={"/"}
+          className="cursor-pointer text-stone-800 focus:text-lime-800"
+        >
+          Voltar
+        </Link>
       </div>
     </div>
   );
