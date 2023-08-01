@@ -10,7 +10,7 @@ interface iInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = forwardRef<HTMLInputElement, iInputProps>(
   ({ type, id, title, errorMessage, ...rest }, ref) => (
-    <fieldset className="flex flex-col  gap-3 w-full">
+    <fieldset className="flex flex-col gap-3 w-full">
       <label htmlFor={id} className="text-stone-800">
         {title}
       </label>

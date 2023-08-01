@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
 import { Link } from "react-router-dom";
 import { iUserRequestInformation } from "../../contexts/userContext/@types";
+import { motion } from "framer-motion";
 
 const SignPage = () => {
   const {
@@ -23,7 +24,15 @@ const SignPage = () => {
   };
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-[url('./assets/wallpaper1.jpg')] bg-cover bg-no-repeat">
-      <div className=" bg-stone-100 bg-opacity-80 w-4/5 max-h-fit flex flex-col items-center justify-center gap-8 py-8 px-4 border-box rounded-3xl overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.8,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
+        className=" bg-stone-100 bg-opacity-80 w-4/5 max-h-fit flex flex-col items-center justify-center gap-8 py-8 px-4 border-box rounded-3xl overflow-hidden"
+      >
         <h2 className="text-2xl font-semibold text-lime-800">VirtuAgenda</h2>
 
         <form
@@ -94,7 +103,7 @@ const SignPage = () => {
         >
           Voltar
         </Link>
-      </div>
+      </motion.div>
     </div>
   );
 };
