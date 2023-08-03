@@ -17,6 +17,7 @@ export const ProfileContainer = () => {
     editUserDetailModal,
     deleteUserDetailModal,
   } = useContext(UserContext);
+
   return (
     <div>
       <div>
@@ -42,17 +43,19 @@ export const ProfileContainer = () => {
           </button>
         </div>
 
-        <ul>
-          {user!.details.map((detail) => (
-            <ProfileCard
-              id={detail.id}
-              email={detail.email}
-              phone={detail.phone}
-              contactTitle={detail.contactTitle}
-              key={detail.id}
-            />
-          ))}
-        </ul>
+        {user && user.details ? (
+          <ul>
+            {user!.details.map((detail) => (
+              <ProfileCard
+                id={detail.id}
+                email={detail.email}
+                phone={detail.phone}
+                contactTitle={detail.contactTitle}
+                key={detail.id}
+              />
+            ))}
+          </ul>
+        ) : null}
       </div>
 
       {editUserModal ? <UpdateUserModal /> : null}

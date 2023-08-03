@@ -30,7 +30,7 @@ const LoginPage = () => {
           duration: 0.8,
           ease: [0, 0.71, 0.2, 1.01],
         }}
-        className="w-4/5 flex flex-col items-center"
+        className="w-4/5 flex flex-col items-center overflow-y-auto"
       >
         <div className="flex flex-col items-center gap-8 border-box  bg-lime-800 rounded-t-3xl py-8 px-4 w-full">
           <h1 className="text-2xl font-semibold text-stone-100">VirtuAgenda</h1>

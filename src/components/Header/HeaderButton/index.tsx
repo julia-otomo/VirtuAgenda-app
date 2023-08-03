@@ -14,5 +14,12 @@ export const HeaderButton = ({ title, id }: iHeaderButtonProps) => {
     setHeaderTitle(id);
     setMenu(false);
   };
-  return <button onClick={() => headerFunction(id)}>{title}</button>;
+  return (
+    <button
+      onClick={() => headerFunction(id)}
+      className="text-stone-100 p-4 box-border hover:bg-lime-800 w-full transition duration-0 hover:duration-300 cursor-pointer"
+    >
+      {title}
+    </button>
+  );
 };
