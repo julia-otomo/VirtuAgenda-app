@@ -10,7 +10,7 @@ export const Header = () => {
     <header className="bg-lime-800 h-16 top-0 fixed w-screen flex flex-col items-center z-20">
       <div className="w-4/5 h-full flex flex-row items-center justify-between p-4 border-box">
         <h1 className="text-stone-100 font-semibold text-lg">VirtuAgenda</h1>
-        <div className=" hidden lg:flex lg:flex-row lg:gap-20 lg:h-full">
+        <div className=" hidden lg:flex lg:flex-row lg:gap-20 lg:h-full h-full items-center">
           <HeaderButton title="Contatos" id="contacts" />
           <HeaderButton title="Perfil" id="profile" />
         </div>

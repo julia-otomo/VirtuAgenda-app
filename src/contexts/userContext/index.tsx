@@ -23,6 +23,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   );
   const navigate = useNavigate();
   const [editUserModal, setEditUserModal] = useState(false);
+  const [deleteUserModal, setDeleteUserModal] = useState(false);
   const [createUserDetailModal, setCreateUserDetailModal] = useState(false);
   const [editUserDetailModal, setEditUserDetailModal] = useState(false);
   const [deleteUserDetailModal, setDeleteUserDetailModal] = useState(false);
@@ -232,6 +233,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         userDetail,
         setUserDetail,
         setUserDetailtById,
+        deleteUserModal,
+        setDeleteUserModal,
       }}
     >
       {children}

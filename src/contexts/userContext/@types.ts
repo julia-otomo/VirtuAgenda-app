@@ -76,4 +76,6 @@ export interface iUserContextProps {
   setUserDetailtById: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
+  deleteUserModal: boolean;
+  setDeleteUserModal: React.Dispatch<React.SetStateAction<boolean>>;
 }

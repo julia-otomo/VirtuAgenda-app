@@ -8,9 +8,21 @@ import { ProfileContainer } from "../../components/ProfileContainer";
 import { CreateContactModal } from "../../components/Modals/CreateContact";
 import { DeleteContactModal } from "../../components/Modals/DeleteContactModal";
 import { UpdateContactModal } from "../../components/Modals/UpdateContactModal";
+import { UpdateUserModal } from "../../components/Modals/UpdateUser";
+import { CreateUserDetailModal } from "../../components/Modals/CreateUserDetailsModal";
+import { DeleteUserDetailModal } from "../../components/Modals/DeleteUserDetailModal";
+import { UpdateUserDetailModal } from "../../components/Modals/UpdateUserDetailModaL";
+import { DeleteUserModal } from "../../components/Modals/DeleteUserModal";
 
 export const Dashboard = () => {
-  const { menu } = useContext(UserContext);
+  const {
+    menu,
+    editUserModal,
+    editUserDetailModal,
+    createUserDetailModal,
+    deleteUserDetailModal,
+    deleteUserModal,
+  } = useContext(UserContext);
   const { headerTitle, createModal, updateModal, deleteModal } =
     useContext(ContactContext);
   return (
@@ -31,6 +43,11 @@ export const Dashboard = () => {
         {createModal ? <CreateContactModal /> : null}
         {updateModal ? <UpdateContactModal /> : null}
         {deleteModal ? <DeleteContactModal /> : null}
+        {editUserModal ? <UpdateUserModal /> : null}
+        {createUserDetailModal ? <CreateUserDetailModal /> : null}
+        {editUserDetailModal ? <UpdateUserDetailModal /> : null}
+        {deleteUserDetailModal ? <DeleteUserDetailModal /> : null}
+        {deleteUserModal ? <DeleteUserModal /> : null}
       </div>
     </>
   );

@@ -31,15 +31,17 @@ const SignPage = () => {
           duration: 0.8,
           ease: [0, 0.71, 0.2, 1.01],
         }}
-        className=" bg-stone-100 bg-opacity-80 w-4/5 max-h-fit flex flex-col items-center justify-center gap-8 py-8 px-4 border-box rounded-3xl overflow-hidden"
+        className=" bg-stone-100 bg-opacity-80 w-4/5 max-h-fit flex flex-col items-center justify-center gap-8 py-8 px-4 border-box rounded-3xl overflow-hidden lg:max-w-[1000px]"
       >
-        <h2 className="text-2xl font-semibold text-lime-800">VirtuAgenda</h2>
+        <h2 className="text-2xl font-semibold text-lime-800 lg:text-3xl">
+          VirtuAgenda
+        </h2>
 
         <form
           onSubmit={handleSubmit(onSubmitForm)}
           className="flex flex-col gap-6 items-center max-h-fit  overflow-y-auto  w-11/12"
         >
-          <h2 className="text-xl font-medium text-stone-800 mb-2 underline decoration-stone-800">
+          <h2 className="text-xl font-medium text-stone-800 mb-2 underline decoration-stone-800 lg:text-2xl">
             Cadastro
           </h2>
           <Input
