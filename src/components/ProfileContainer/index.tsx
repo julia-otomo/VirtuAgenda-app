@@ -62,19 +62,17 @@ export const ProfileContainer = () => {
           </button>
         </div>
 
-        {user && user.details ? (
-          <Carousel>
-            {user?.details.map((detail) => (
-              <ProfileCard
-                id={detail.id}
-                email={detail.email}
-                phone={detail.phone}
-                contactTitle={detail.contactTitle}
-                key={detail.id}
-              />
-            ))}
-          </Carousel>
-        ) : null}
+        <Carousel>
+          {user?.details.map((detail) => (
+            <ProfileCard
+              id={detail.id}
+              email={detail.email}
+              phone={detail.phone}
+              contactTitle={detail.contactTitle}
+              key={detail.id}
+            />
+          ))}
+        </Carousel>
       </div>
     </div>
   );
